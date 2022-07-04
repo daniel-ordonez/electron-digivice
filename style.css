@@ -1,0 +1,138 @@
+
+@font-face {
+  font-family: 'nokiafc22';
+  src: url('assets/fonts/nokiafc22.ttf')  format('truetype');
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'nokiafc22',  -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+#main {
+  -webkit-app-region: drag;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  --size: 300px;
+  width: var(--width, var(--size));
+  height: var(--height, var(--size));
+}
+*, button {
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.digivice {
+  position: relative;
+  background-image: url('./assets/digivice_body.png');
+  width: var(--width, var(--size));
+  height: var(--height, var(--size));
+  will-change: opacity;
+}
+
+.digivice button{
+  position: absolute;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  will-change: transform;
+}
+.digivice button:active{
+  transform: scale(0.95);
+}
+.digivice .btnA {
+  background-image: url('./assets/button A.png');
+  height: calc(var(--size)*.225);
+  width: calc(var(--size)*.225);
+  transform-origin: center;
+  left: 8%;
+  top: 39%;
+}
+.digivice .btnB {
+  background-image: url('./assets/button B.png');
+  height: calc(var(--size)*.225);
+  width: calc(var(--size)*.225);
+  transform-origin: center;
+  right: 8%;
+  top: 33%;
+}
+.digivice .btnC {
+  background-image: url('./assets/button C.png');
+  height: calc(var(--size)*.225);
+  width: calc(var(--size)*.225);
+  transform-origin: center;
+  right: 8%;
+  top: 52%;
+}
+.digivice .screen {
+  --pv: 6px;
+  --ph: 6px;
+  padding: var(--pv) var(--ph);
+  font-family: inherit;
+  line-height: 1;
+  position: absolute;
+  display: grid;
+  place-items: end;
+  height: calc((var(--size)*.26) - (var(--pv)*2));
+  width: calc((var(--size)*.26) - (var(--ph)*2));
+  transform-origin: center;
+  left: 36.5%;
+  top: 38.5%;
+  filter: drop-shadow(2px 2px 1px rgba(0,0,0,0.2)) opacity(0.9);
+  grid-template-areas: "id cp"
+  "ch ch"
+  "vl vl";
+}
+.screen--monster {
+  background-image: url(assets/egg.gif);
+  background-position: center;
+  background-size: contain;
+}
+.screen--monster>div{
+  display: none;
+}
+.token-id {
+  justify-self: start;
+  font-size: 12px;
+  grid-area: id;
+}
+.token-value {
+  font-size: 18px;
+  padding-right: 5px;
+  grid-area: vl;
+}
+.token-value:not(:empty)::after{
+  font-size: 10px;
+  position: absolute;
+  content: "K";
+}
+
+.token-change {
+  position: relative;
+  font-size: 14px;
+  align-self: end;
+  justify-self: end;
+  padding-right: 5px;
+  grid-area: ch;
+}
+.token-change:not(:empty):before{
+  font-size: 1em;
+  position: absolute;
+  content: attr(data-dir);
+  left: -1em;
+  top: calc(50% - .5em);
+}
+.token-change:not(:empty)::after {
+  font-size: 10px;
+  position: absolute;
+  content: "%";
+}
+
+.token-change-period {
+  font-size: 8px;
+  grid-area: cp;
+}
+
